@@ -5,22 +5,22 @@ using UnityEngine;
 public class SideWall : MonoBehaviour
 {
     public BallController bc;
+    public bool isRight;
+    public ScoreManager sm;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void OnTriggerEnter2D(Collider2D collide)
     {
         if (collide.name == "Ball")
         {
-            bc.RestartGame();
+            if(isRight){
+                sm.AddRightScore(1);
+                
+            }
+            else{
+                sm.AddLeftScore(1);
+                
+            }
+            
         }
     }
 }
