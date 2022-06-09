@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallController : MonoBehaviour
 {
+    public Text buff;
     public Vector2 ballFast;
     public int spd;
     private Rigidbody2D rb;
@@ -16,7 +18,7 @@ public class BallController : MonoBehaviour
     }
     private void Update()
     {
-        
+        buff.text = spd.ToString();
         
     }
     public void PushBall(){
