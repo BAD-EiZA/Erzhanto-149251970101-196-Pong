@@ -13,11 +13,13 @@ public class BallController : MonoBehaviour
 
     private void Start(){
         rb = GetComponent<Rigidbody2D>();
+        spd = 2;
         RestartGame();
         
     }
     private void Update()
     {
+        Debug.Log("Vector 2 : " + ballFast + "*" + "Speed : " + spd);
         buff.text = spd.ToString();
         
     }
