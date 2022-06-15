@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
     public int rightScore;
     public int leftScore;
     public int maxScore;
+    
 
     [Header("Game Object")]
     public Text rgScore;

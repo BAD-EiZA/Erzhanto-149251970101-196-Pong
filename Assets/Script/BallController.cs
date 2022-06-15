@@ -28,7 +28,7 @@ public class BallController : MonoBehaviour
             StartCoroutine("StopPowerUpSpeedUp");
         }
 
-        buff.text = rb.velocity.ToString();
+        buff.text = rb.velocity.magnitude.ToString();
 
     }
     public void PushBall()
@@ -45,28 +45,24 @@ public class BallController : MonoBehaviour
     {
         ResetBall();
         Invoke("PushBall", 2);
+        StopAllCoroutines();
     }
     public void ActPowerUpSpeedUp(float magtitude)
     {
-        
-        
-        rb.velocity = rb.velocity * magtitude;
+        rb.velocity *= magtitude;
         isBuffs = false;
-        
-        
-        
-
-
-
-
     }
     
     public IEnumerator StopPowerUpSpeedUp()
     {
+
         yield return new WaitForSeconds(3);
+        rb.velocity = rb.velocity.normalized * 6;
         isBuffs = true;
-        rb.velocity -= rb.velocity * 0.1f;
+
         
+        
+
 
     }
     
