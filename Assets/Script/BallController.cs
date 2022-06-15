@@ -35,6 +35,7 @@ public class BallController : MonoBehaviour
         }
         if (transform.position.y > 7f || transform.position.y < -7f)
         {
+            StopCoroutine("StopPowerUpSpeedUp");
             RestartGame();
         }
 
