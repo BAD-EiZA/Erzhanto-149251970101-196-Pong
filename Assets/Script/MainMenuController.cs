@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public void PlayGame(){
-        SceneManager.LoadScene("Game");
+    public void SingleGame(){
+        SceneManager.LoadScene("SinglePlayer");
+        Debug.Log("Created by Erzhanto - 149251970101-196");
+    }
+    public void MultiGame()
+    {
+        SceneManager.LoadScene("MultiPlayer");
         Debug.Log("Created by Erzhanto - 149251970101-196");
     }
     public void Author(){

@@ -1574,12 +1574,12 @@ GameObject:
   - component: {fileID: 998135419}
   - component: {fileID: 998135418}
   m_Layer: 0
-  m_Name: Paddle Kanan AI
-  m_TagString: Untagged
+  m_Name: Paddle Kanan
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &998135417
 Transform:
   m_ObjectHideFlags: 0
@@ -2597,11 +2597,11 @@ GameObject:
   - component: {fileID: 1566551701}
   m_Layer: 0
   m_Name: Paddle Kanan
-  m_TagString: Untagged
+  m_TagString: EnemyAI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1566551696
 Transform:
   m_ObjectHideFlags: 0

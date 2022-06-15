@@ -20,7 +20,6 @@ public class PowerUpController : MonoBehaviour
             Destroy(gameObject);
         else
             instance = this;
-
         powerUpList = new List<GameObject>();
         isSpawning = false;
         
