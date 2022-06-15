@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUpController : MonoBehaviour
 {
+    public static PowerUpController instance;
     [Header("Variable")]
     public int maxPowerUp;
     public float seconds;
@@ -15,7 +16,12 @@ public class PowerUpController : MonoBehaviour
     [Header("Prefab")]
     public List<GameObject> powerUpTemplateList;
     void Start()
-    { 
+    {
+        if(instance != null)
+            Destroy(gameObject);
+        else
+            instance = this;
+
         powerUpList = new List<GameObject>();
         isSpawning = false;
     }
@@ -31,7 +37,6 @@ public class PowerUpController : MonoBehaviour
     }
     public IEnumerator SpawnPowerUp()
     {
-        
         isSpawning = true;
         int randomIndex = Random.Range(0, powerUpTemplateList.Count);
         GameObject Powers = Instantiate(powerUpTemplateList[randomIndex], new Vector3(Random.Range(-5f, 6f), Random.Range(-3f, 1f), powerUpTemplateList[randomIndex].transform.position.z), Quaternion.identity);

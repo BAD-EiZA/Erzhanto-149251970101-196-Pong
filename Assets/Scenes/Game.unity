@@ -2433,6 +2433,7 @@ GameObject:
   - component: {fileID: 1566551700}
   - component: {fileID: 1566551699}
   - component: {fileID: 1566551698}
+  - component: {fileID: 1566551701}
   m_Layer: 0
   m_Name: Paddle Kanan
   m_TagString: Untagged
@@ -2512,7 +2513,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566551695}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb33abf653a3674f87b4a281b79202b, type: 3}
   m_Name: 
@@ -2567,6 +2568,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &1566551701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566551695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8500b177933d1b34098952d456b45086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spd: 5
+  delayMove: 0
 --- !u!1 &1587642111
 GameObject:
   m_ObjectHideFlags: 0

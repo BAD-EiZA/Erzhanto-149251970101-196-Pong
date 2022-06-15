@@ -13,6 +13,7 @@ public class PowerUp : MonoBehaviour
         {
             BallController ball = coli.GetComponent<BallController>();
             ball.ActPowerUpSpeedUp(magtitude);
+            PowerUpController.instance.RemovePowerUp(gameObject);
             SoundManager.instance.PowersUp();
             Destroy(gameObject);
         }
