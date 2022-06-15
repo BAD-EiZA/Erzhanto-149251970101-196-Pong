@@ -9,14 +9,25 @@ public class BallController : MonoBehaviour
     public Text buff;
     private Vector2 ballFast;
     private Rigidbody2D rb;
-
+    public bool isBuffs;
+    public float times = 2f;
+    public float seconds;
     private void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         RestartGame();
+        isBuffs = true;
     }
     private void Update()
     {
+        times -= Time.deltaTime;
+        seconds = Mathf.FloorToInt(times % 60);
+        if (seconds % 3 == 0 && !isBuffs)
+        {
+            StartCoroutine("StopPowerUpSpeedUp");
+        }
+
         buff.text = rb.velocity.ToString();
 
     }
@@ -37,13 +48,26 @@ public class BallController : MonoBehaviour
     }
     public void ActPowerUpSpeedUp(float magtitude)
     {
+        
+        
+        rb.velocity = rb.velocity * magtitude;
+        isBuffs = false;
+        
+        
+        
 
-        rb.velocity *= magtitude;
+
+
 
     }
-    public void StopPowerUpSpeedUp()
+    
+    public IEnumerator StopPowerUpSpeedUp()
     {
-        rb.velocity /= 1;
+        yield return new WaitForSeconds(3);
+        isBuffs = true;
+        rb.velocity -= rb.velocity * 0.1f;
+        
+
     }
     
 
