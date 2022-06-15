@@ -17,7 +17,6 @@ public class SoundManager : MonoBehaviour
         else
             instance = this;
         audios = GetComponent<AudioSource>();
-
     }
     public void BallBounces()
     {

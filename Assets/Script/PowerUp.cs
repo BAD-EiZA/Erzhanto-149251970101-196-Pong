@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    
     public float magtitude;
-
     private void OnTriggerEnter2D(Collider2D coli)
     {
         if(coli.name == "Ball")

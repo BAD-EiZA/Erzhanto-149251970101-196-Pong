@@ -6,7 +6,6 @@ public class SideWall : MonoBehaviour
 {
     public bool isRight;
     public ScoreManager sm;
-    // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collide)
     {
         if (collide.name == "Ball")
@@ -14,12 +13,10 @@ public class SideWall : MonoBehaviour
             if(isRight){
                 SoundManager.instance.Goals();
                 sm.AddRightScore(1);
-                
             }
             else{
                 SoundManager.instance.Goals();
                 sm.AddLeftScore(1);
-                
             }
             
         }

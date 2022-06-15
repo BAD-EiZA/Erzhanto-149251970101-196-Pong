@@ -16,8 +16,6 @@ public class AIRacket : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(!isMoveAI && !isSingleTake)
@@ -30,7 +28,6 @@ public class AIRacket : MonoBehaviour
             MoveAI();
         }
     }
-
     private IEnumerator DelayAI()
     {
         yield return new WaitForSeconds(delayMove);

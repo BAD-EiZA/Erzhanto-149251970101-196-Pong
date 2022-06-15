@@ -15,7 +15,6 @@ public class BallController : MonoBehaviour
     public float seconds;
     private void Start()
     {
-        
         rb = GetComponent<Rigidbody2D>();
         RestartGame();
         isBuffs = true;
@@ -38,8 +37,6 @@ public class BallController : MonoBehaviour
             StopCoroutine("StopPowerUpSpeedUp");
             RestartGame();
         }
-
-
         buff.text = rb.velocity.magnitude.ToString();
         Debug.Log("Vector : " + rb.velocity);
 
@@ -68,15 +65,9 @@ public class BallController : MonoBehaviour
     
     public IEnumerator StopPowerUpSpeedUp()
     {
-
         yield return new WaitForSeconds(3);
         rb.velocity = rb.velocity.normalized * 6;
         isBuffs = true;
-
-        
-        
-
-
     }
     
 
