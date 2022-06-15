@@ -33,6 +33,7 @@ public class ScoreManager : MonoBehaviour
         }
         else{
             bc.RestartGame();
+            bc.isGoal = true;
         }
     }
     public void AddLeftScore(int value){
@@ -43,6 +44,7 @@ public class ScoreManager : MonoBehaviour
         }
         else{
             bc.RestartGame();
+            bc.isGoal = true;
         }
     }
     public void ResetScore(){

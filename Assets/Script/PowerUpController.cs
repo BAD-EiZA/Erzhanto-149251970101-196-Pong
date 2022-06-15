@@ -11,7 +11,6 @@ public class PowerUpController : MonoBehaviour
     public float timer;
     [Header("Game Setting")]
     public bool isSpawning;
-    public bool isBuffz;
     [Header("Prefab")]
     public List<GameObject> powerUpTemplateList;
     public List<GameObject> powerUpList;
@@ -24,7 +23,7 @@ public class PowerUpController : MonoBehaviour
 
         powerUpList = new List<GameObject>();
         isSpawning = false;
-        isBuffz = false;
+        
     }
     private void Update()
     {

@@ -672,7 +672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8adf7ec6bddfcb4b8c634b3dced6fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bc: {fileID: 0}
   isRight: 0
   sm: {fileID: 1911592970}
 --- !u!61 &325805142
@@ -1604,7 +1603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8adf7ec6bddfcb4b8c634b3dced6fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bc: {fileID: 0}
   isRight: 1
   sm: {fileID: 1911592970}
 --- !u!61 &1022089276
@@ -2417,7 +2415,6 @@ MonoBehaviour:
   seconds: 0
   timer: 0
   isSpawning: 0
-  isBuffz: 0
   powerUpTemplateList:
   - {fileID: 7368607961701207885, guid: 04b209e445c6d87468eaa2e6bca3d49e, type: 3}
   powerUpList: []
@@ -2934,6 +2931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buff: {fileID: 2088271747}
   isBuffs: 0
+  isGoal: 0
   times: 0
   seconds: 0
 --- !u!212 &1839634616

@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour
     private Vector2 ballFast;
     private Rigidbody2D rb;
     public bool isBuffs;
+    public bool isGoal;
     public float times = 2f;
     public float seconds;
     private void Start()
@@ -18,7 +19,8 @@ public class BallController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         RestartGame();
         isBuffs = true;
-    }
+        isGoal = false;
+}
     private void Update()
     {
         times -= Time.deltaTime;
@@ -27,8 +29,18 @@ public class BallController : MonoBehaviour
         {
             StartCoroutine("StopPowerUpSpeedUp");
         }
+        else if (isGoal)
+        {
+            StopCoroutine("StopPowerUpSpeedUp");
+        }
+        if (transform.position.y > 7f || transform.position.y < -7f)
+        {
+            RestartGame();
+        }
+
 
         buff.text = rb.velocity.magnitude.ToString();
+        Debug.Log("Vector : " + rb.velocity);
 
     }
     public void PushBall()
@@ -45,7 +57,7 @@ public class BallController : MonoBehaviour
     {
         ResetBall();
         Invoke("PushBall", 2);
-        StopAllCoroutines();
+        isGoal = false;
     }
     public void ActPowerUpSpeedUp(float magtitude)
     {
