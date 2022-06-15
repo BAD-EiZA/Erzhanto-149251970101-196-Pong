@@ -6,7 +6,6 @@ public class PowerUpController : MonoBehaviour
 {
     [Header("Variable")]
     public int maxPowerUp;
-    public static PowerUpController instance;
     public float seconds;
     [Header("Game Setting")]
     public float timer;
@@ -20,30 +19,29 @@ public class PowerUpController : MonoBehaviour
         powerUpList = new List<GameObject>();
         isSpawning = false;
     }
-
-    // Update is called once per frame
     private void Update()
     {
         timer -= Time.deltaTime;
         seconds = Mathf.FloorToInt(timer % 60);
         if (seconds % 10 == 0 && !isSpawning)
         {
-            StartCoroutine("SpawnPowerUp");
+            StartCoroutine("SpawnPowerUp", 2f);
         }
+        Debug.Log("Index : " + powerUpList.Count);
     }
     public IEnumerator SpawnPowerUp()
     {
         
         isSpawning = true;
         int randomIndex = Random.Range(0, powerUpTemplateList.Count);
-        GameObject Powers = Instantiate(powerUpTemplateList[randomIndex], new Vector3(Random.Range(-5f, 3f), Random.Range(-3f, 1f), powerUpTemplateList[randomIndex].transform.position.z), Quaternion.identity);
+        GameObject Powers = Instantiate(powerUpTemplateList[randomIndex], new Vector3(Random.Range(-5f, 6f), Random.Range(-3f, 1f), powerUpTemplateList[randomIndex].transform.position.z), Quaternion.identity);
         powerUpList.Add(Powers);
         yield return new WaitForSeconds(1);
         if (powerUpList.Count >= maxPowerUp)
         {
             isSpawning = true;
-            yield return new WaitForSeconds(30);
-            powerUpList.Clear();
+            yield return new WaitForSeconds(7);
+            RemoveAllPowerUp();
             isSpawning = false;
         }
         else
@@ -51,5 +49,18 @@ public class PowerUpController : MonoBehaviour
             isSpawning = false;
         }
     }
-    
+    public void RemovePowerUp(GameObject Powers)
+    {
+        powerUpList.Remove(Powers);
+        Destroy(Powers);
+    }
+
+    public void RemoveAllPowerUp()
+    {
+        while (powerUpList.Count > 0)
+        {
+            RemovePowerUp(powerUpList[0]);
+        }
+    }
+
 }

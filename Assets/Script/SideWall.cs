@@ -13,10 +13,12 @@ public class SideWall : MonoBehaviour
         if (collide.name == "Ball")
         {
             if(isRight){
+                SoundManager.instance.Goals();
                 sm.AddRightScore(1);
                 
             }
             else{
+                SoundManager.instance.Goals();
                 sm.AddLeftScore(1);
                 
             }
