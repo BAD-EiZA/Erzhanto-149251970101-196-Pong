@@ -59,15 +59,15 @@ public class BallController : MonoBehaviour
     }
     public void LongPaddle(float longs)
     {
-        PaddleController.instance.rb.transform.localScale = new Vector3(0.3f, longs, 1);
-        EnemyController.instance.rb.transform.localScale = new Vector3(0.3f, longs, 1);
+        PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, longs, 2.4f);
+        EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, longs, 2.4f);
         StartCoroutine("StopLong");
     }
     public IEnumerator StopLong()
     {
         yield return new WaitForSeconds(5);
-        PaddleController.instance.rb.transform.localScale = new Vector3(0.3f, 1.7f, 1);
-        EnemyController.instance.rb.transform.localScale = new Vector3(0.3f, 1.7f, 1);
+        PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, 1.2f, 2.4f);
+        EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, 1.2f, 1.2f);
 
     }
     public void SpeedPadle(float spds)

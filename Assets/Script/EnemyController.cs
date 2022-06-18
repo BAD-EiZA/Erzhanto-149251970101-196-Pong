@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     private bool isMoveAI;
     private bool isSingleTake;
     private bool isUp;
+    public bool isOver;
     [Header("Another")]
     public KeyCode upButton = KeyCode.W;
     public KeyCode downButton = KeyCode.S;
@@ -40,6 +41,11 @@ public class EnemyController : MonoBehaviour
             {
                 MoveAI();
             }
+            
+        }
+        if (isOver)
+        {
+            rb.velocity = Vector3.zero;
         }
             
         
@@ -66,7 +72,7 @@ public class EnemyController : MonoBehaviour
     private IEnumerator DelayAI()
     {
         yield return new WaitForSeconds(delayMove);
-        randPos = Random.Range(-2f, 2f);
+        randPos = Random.Range(-1f, 1f);
         if (transform.position.y < randPos)
         {
             isUp = true;

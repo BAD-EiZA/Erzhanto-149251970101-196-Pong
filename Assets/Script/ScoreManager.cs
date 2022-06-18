@@ -58,6 +58,7 @@ public class ScoreManager : MonoBehaviour
             rgWin.SetActive(true);
             bls.SetActive(false);
             PowerUpController.instance.isSpawning = true;
+            EnemyController.instance.isOver = true;
             
         }
         else if (leftScore == maxScore){
@@ -66,6 +67,7 @@ public class ScoreManager : MonoBehaviour
             lfWin.SetActive(true);
             bls.SetActive(false);
             PowerUpController.instance.isSpawning = true;
+            EnemyController.instance.isOver = true;
         }
     }
 }
