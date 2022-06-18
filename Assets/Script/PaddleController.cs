@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
+    public static PaddleController instance;
     public float spd;
     public KeyCode upButton = KeyCode.W;
     public KeyCode downButton = KeyCode.S;
-    private Rigidbody2D rb;
-    // Start is called before the first frame update
+    public Rigidbody2D rb;
+    public bool isLong;
+    public bool isSpeed;
     void Start()
     {
+        instance = this;
         rb = GetComponent<Rigidbody2D>();
+        isLong = true;
+        isSpeed = true;
     }
-
-    // Update is called once per frame
     void Update()
     {
         MoveObject(GetInput());
@@ -33,4 +36,6 @@ public class PaddleController : MonoBehaviour
         Debug.Log("Speed Paddle :" + movement);
         rb.velocity = movement;
     }
+    
+    
 }

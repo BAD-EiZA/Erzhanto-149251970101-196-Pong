@@ -14,6 +14,7 @@ public class PowerUpController : MonoBehaviour
     [Header("Prefab")]
     public List<GameObject> powerUpTemplateList;
     public List<GameObject> powerUpList;
+    public GameObject Paddle;
     void Start()
     {
         if(instance != null)
@@ -65,6 +66,10 @@ public class PowerUpController : MonoBehaviour
         {
             RemovePowerUp(powerUpList[0]);
         }
+    }
+    public void PaddleLong()
+    {
+        Paddle.transform.localScale = Vector3.one;
     }
 
 }

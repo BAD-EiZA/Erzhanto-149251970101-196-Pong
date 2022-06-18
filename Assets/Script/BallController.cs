@@ -7,34 +7,23 @@ using UnityEngine.UI;
 public class BallController : MonoBehaviour
 {
     public Text buff;
+    private PaddleController pc;
+    private GameObject go;
     private Vector2 ballFast;
     private Rigidbody2D rb;
-    public bool isBuffs;
     public bool isGoal;
-    public float times = 2f;
-    public float seconds;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        pc = GetComponent<PaddleController>();
         RestartGame();
-        isBuffs = true;
         isGoal = false;
 }
     private void Update()
     {
-        times -= Time.deltaTime;
-        seconds = Mathf.FloorToInt(times % 60);
-        if (seconds % 3 == 0 && !isBuffs)
-        {
-            StartCoroutine("StopPowerUpSpeedUp");
-        }
-        else if (isGoal)
-        {
-            StopCoroutine("StopPowerUpSpeedUp");
-        }
         if (transform.position.y > 7f || transform.position.y < -7f)
         {
-            StopCoroutine("StopPowerUpSpeedUp");
+            
             RestartGame();
         }
         buff.text = rb.velocity.magnitude.ToString();
@@ -43,7 +32,7 @@ public class BallController : MonoBehaviour
     }
     public void PushBall()
     {
-        ballFast = new Vector2(Random.Range(-1, 3) * 2 - 1, Random.Range(3f, 7f));
+        ballFast = new Vector2(Random.Range(-1, 3) * 2 - 1, Random.Range(3, 7));
         rb.velocity = ballFast;
     }
     public void ResetBall()
@@ -55,20 +44,43 @@ public class BallController : MonoBehaviour
     {
         ResetBall();
         Invoke("PushBall", 2);
-        isGoal = false;
+        StopCoroutine("StopPowerUpSpeedUp");
     }
     public void ActPowerUpSpeedUp(float magtitude)
     {
         rb.velocity *= magtitude;
-        isBuffs = false;
+        StartCoroutine("StopPowerUpSpeedUp");
     }
     
     public IEnumerator StopPowerUpSpeedUp()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         rb.velocity = rb.velocity.normalized * 6;
-        isBuffs = true;
     }
-    
+    public void LongPaddle(float longs)
+    {
+        PaddleController.instance.rb.transform.localScale = new Vector3(0.3f, longs, 1);
+        EnemyController.instance.rb.transform.localScale = new Vector3(0.3f, longs, 1);
+        StartCoroutine("StopLong");
+    }
+    public IEnumerator StopLong()
+    {
+        yield return new WaitForSeconds(5);
+        PaddleController.instance.rb.transform.localScale = new Vector3(0.3f, 1.7f, 1);
+        EnemyController.instance.rb.transform.localScale = new Vector3(0.3f, 1.7f, 1);
 
+    }
+    public void SpeedPadle(float spds)
+    {
+        PaddleController.instance.spd *= spds;
+        EnemyController.instance.spdPaddle *= spds;
+        StartCoroutine("StopSpeed");
+
+    }
+    public IEnumerator StopSpeed()
+    {
+        yield return new WaitForSeconds(5);
+        PaddleController.instance.spd = 5;
+        EnemyController.instance.spdPaddle = 5;
+    }
 }
