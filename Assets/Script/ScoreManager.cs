@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager instance;
     [Header("Script")]
     public BallController bc;
 
@@ -14,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     public int rightScore;
     public int leftScore;
     public int maxScore;
+    public bool isHit;
     
 
     [Header("Game Object")]
@@ -25,6 +27,10 @@ public class ScoreManager : MonoBehaviour
     public GameObject bls;
     public GameObject PowerUp;
 
+    private void Start()
+    {
+        instance = this;
+    }
     public void AddRightScore(int value){
         rightScore += value;
         rgScore.text = rightScore.ToString();
@@ -66,6 +72,15 @@ public class ScoreManager : MonoBehaviour
             rgWin.SetActive(false);
             lfWin.SetActive(true);
             bls.SetActive(false);
+            PowerUpController.instance.isSpawning = true;
+            EnemyController.instance.isOver = true;
+        }
+        else if (isHit)
+        {
+            overPanel.SetActive(true);
+            bls.SetActive(false);
+            lfWin.SetActive(false);
+            rgWin.SetActive(false);
             PowerUpController.instance.isSpawning = true;
             EnemyController.instance.isOver = true;
         }

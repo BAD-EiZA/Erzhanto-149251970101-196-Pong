@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     public KeyCode upButton = KeyCode.W;
     public KeyCode downButton = KeyCode.S;
     public Rigidbody2D rb;
+    
     void Start()
     {
         instance = this;
@@ -41,16 +42,12 @@ public class EnemyController : MonoBehaviour
             {
                 MoveAI();
             }
-            
+           
         }
         if (isOver)
         {
             rb.velocity = Vector3.zero;
-        }
-            
-        
-        
-        
+        }   
     }
     private Vector2 GetInput()
     {
