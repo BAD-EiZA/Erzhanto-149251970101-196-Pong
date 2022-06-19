@@ -36,6 +36,10 @@ public class PaddleController : MonoBehaviour
         Debug.Log("Speed Paddle :" + movement);
         rb.velocity = movement;
     }
+    public void ResetPaddle()
+    {
+        rb.velocity = Vector2.zero;
+    }
     
     
 }

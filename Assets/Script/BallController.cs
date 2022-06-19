@@ -7,15 +7,12 @@ using UnityEngine.UI;
 public class BallController : MonoBehaviour
 {
     public Text buff;
-    private PaddleController pc;
-    private GameObject go;
     private Vector2 ballFast;
     private Rigidbody2D rb;
     public bool isGoal;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        pc = GetComponent<PaddleController>();
         RestartGame();
         isGoal = false;
 }
@@ -23,7 +20,6 @@ public class BallController : MonoBehaviour
     {
         if (transform.position.y > 7f || transform.position.y < -7f)
         {
-            
             RestartGame();
         }
         buff.text = rb.velocity.magnitude.ToString();
@@ -32,8 +28,16 @@ public class BallController : MonoBehaviour
     }
     public void PushBall()
     {
-        ballFast = new Vector2(Random.Range(-1, 3) * 2 - 1, Random.Range(3, 7));
-        rb.velocity = ballFast;
+        if(GameData.instance.isSingleplayer == true)
+        {
+            ballFast = new Vector2(Random.Range(-1, 3) * 2 - 1, Random.Range(3, 7));
+            rb.velocity = ballFast * 2;
+        }
+        if(GameData.instance.isSingleplayer == false)
+        {
+            ballFast = new Vector2(Random.Range(-1, 3) * 2 - 1, Random.Range(3, 7));
+            rb.velocity = ballFast;
+        } 
     }
     public void ResetBall()
     {
@@ -57,18 +61,37 @@ public class BallController : MonoBehaviour
         yield return new WaitForSeconds(5);
         rb.velocity = rb.velocity.normalized * 6;
     }
-    public void LongPaddle(float longs)
+    public void LongPaddle()
     {
-        PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, longs, 2.4f);
-        EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, longs, 2.4f);
+        if (GameData.instance.isSingleplayer == true)
+        {
+            PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, 1.7f, 2.4f);
+            EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, 1.7f, 2.4f);
+        }
+        if(GameData.instance.isSingleplayer == false)
+        {
+            PaddleController.instance.rb.transform.localScale = new Vector3(0.3f, 2.7f, 1);
+
+            EnemyController.instance.rb.transform.localScale = new Vector3(0.3f, 2.7f, 1);
+        }
+        
+        
         StartCoroutine("StopLong");
     }
     public IEnumerator StopLong()
     {
         yield return new WaitForSeconds(5);
-        PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, 1.2f, 2.4f);
-        EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, 1.2f, 1.2f);
+        if (GameData.instance.isSingleplayer == true)
+        {
+            PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, 1.2f, 2.4f);
+            EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, 1.2f, 2.4f);
+        }
+        if (GameData.instance.isSingleplayer == false)
+        {
+            PaddleController.instance.rb.transform.localScale = new Vector3(0.3f, 1.7f, 1);
 
+            EnemyController.instance.rb.transform.localScale = new Vector3(0.3f, 1.7f, 1);
+        }
     }
     public void SpeedPadle(float spds)
     {
@@ -82,5 +105,15 @@ public class BallController : MonoBehaviour
         yield return new WaitForSeconds(5);
         PaddleController.instance.spd = 5;
         EnemyController.instance.spdPaddle = 5;
+    }
+    public void SlowProjectile(float slow)
+    {
+        Projectile.instance.spd = slow;
+        StartCoroutine("StopSlow");
+    }
+    public IEnumerator StopSlow()
+    {
+        yield return new WaitForSeconds(5);
+        Projectile.instance.spd = 5;
     }
 }

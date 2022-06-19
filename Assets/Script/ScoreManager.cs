@@ -74,6 +74,7 @@ public class ScoreManager : MonoBehaviour
             bls.SetActive(false);
             PowerUpController.instance.isSpawning = true;
             EnemyController.instance.isOver = true;
+            
         }
         else if (isHit)
         {
@@ -83,6 +84,7 @@ public class ScoreManager : MonoBehaviour
             rgWin.SetActive(false);
             PowerUpController.instance.isSpawning = true;
             EnemyController.instance.isOver = true;
+            
         }
     }
 }

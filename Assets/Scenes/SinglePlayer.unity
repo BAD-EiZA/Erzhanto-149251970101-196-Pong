@@ -702,7 +702,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RESTART
+  m_Text: MENU
 --- !u!222 &217364302
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -962,7 +962,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: EXIT
 --- !u!222 &355678042
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1064,7 +1064,7 @@ GameObject:
   - component: {fileID: 457076249}
   m_Layer: 0
   m_Name: PaddleEnemy
-  m_TagString: Enemy
+  m_TagString: EnemyAI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81490c0b664f844a98ef6ebec26dc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spdAI: 10
+  spdAI: 5
   spdPaddle: 0
   delayMove: 0
   isOver: 0
@@ -1656,7 +1656,7 @@ GameObject:
   - component: {fileID: 786900752}
   - component: {fileID: 786900751}
   m_Layer: 5
-  m_Name: Restart
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1728,7 +1728,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 121709601}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: Menu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2310,7 +2310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1897256597995829414, guid: 63c030a4ff71ac84aadfc82d73a60885, type: 3}
   spwn: {fileID: 322803965}
-  cooldown: 1.5
+  cooldown: 10
 --- !u!1 &1049892277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2324,7 @@ GameObject:
   - component: {fileID: 1049892280}
   - component: {fileID: 1049892279}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2396,7 +2396,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 121709601}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: Menu
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2533,7 +2533,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9fb7474362db9a542a077141d7542e26, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d3d07539f4ef6ee4aaa1c272cec11496, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.492
   m_Pitch: 1
@@ -3273,13 +3273,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6993d658d62ac694e899b28f7a32bb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPowerUp: 2
+  maxPowerUp: 3
   seconds: 0
   timer: 0
   isSpawning: 0
   powerUpTemplateList:
   - {fileID: 7368607961701207885, guid: 04b209e445c6d87468eaa2e6bca3d49e, type: 3}
-  - {fileID: 3188842169955012037, guid: e6ea881a1442a024c81c0b2d8d327911, type: 3}
+  - {fileID: 4419398269928181531, guid: 84eb0f02bdc13ac46af8dcfb2b697565, type: 3}
   - {fileID: 8228736514417527344, guid: 8d9fe173551da614fa4d54d268a86fba, type: 3}
   powerUpList: []
   Paddle: {fileID: 0}
@@ -3959,7 +3959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.40392157, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

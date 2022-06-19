@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public static Projectile instance;
     public float spd;
     private Vector2 arah;
     private Transform player;
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         player = GameObject.Find("PaddlePlayer").transform;
         arah = new Vector2(player.position.x, player.position.y);
     }

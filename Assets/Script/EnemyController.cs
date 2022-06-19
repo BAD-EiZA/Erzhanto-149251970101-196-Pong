@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     public KeyCode upButton = KeyCode.W;
     public KeyCode downButton = KeyCode.S;
     public Rigidbody2D rb;
+
     
     void Start()
     {
