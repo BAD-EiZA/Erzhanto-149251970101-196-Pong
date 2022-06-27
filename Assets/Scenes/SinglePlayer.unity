@@ -1064,7 +1064,7 @@ GameObject:
   - component: {fileID: 457076249}
   m_Layer: 0
   m_Name: PaddleEnemy
-  m_TagString: Paddle Kanan
+  m_TagString: PaddleKanan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3276,7 +3276,6 @@ MonoBehaviour:
   maxPowerUp: 3
   seconds: 0
   timer: 0
-  isHit: 0
   isSpawning: 0
   powerUpTemplateList:
   - {fileID: 7368607961701207885, guid: 04b209e445c6d87468eaa2e6bca3d49e, type: 3}
@@ -3735,6 +3734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buff: {fileID: 2088271747}
   isGoal: 0
+  isHit: 0
 --- !u!212 &1839634616
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4056,7 +4056,7 @@ GameObject:
   - component: {fileID: 2062587012}
   m_Layer: 0
   m_Name: PaddlePlayer
-  m_TagString: Paddle Kiri
+  m_TagString: PaddleKiri
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

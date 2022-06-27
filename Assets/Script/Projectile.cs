@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D coli)
     {
-        if (coli.gameObject.CompareTag("Player"))
+        if (coli.gameObject.CompareTag("PaddleKiri"))
         {
             ScoreManager.instance.isHit = true;
             ScoreManager.instance.GameOver();
