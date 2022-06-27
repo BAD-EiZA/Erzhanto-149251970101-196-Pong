@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour
     private Vector2 ballFast;
     private Rigidbody2D rb;
     public bool isGoal;
+    public bool isHit;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -39,6 +40,17 @@ public class BallController : MonoBehaviour
             rb.velocity = ballFast;
         } 
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "PaddleKanan")
+        {
+            isHit = true;
+        }
+        if (collision.gameObject.tag == "PaddleKiri")
+        {
+            isHit = false;
+        }
+    }
     public void ResetBall()
     {
         transform.position = Vector2.zero;
@@ -65,14 +77,31 @@ public class BallController : MonoBehaviour
     {
         if (GameData.instance.isSingleplayer == true)
         {
-            PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, 1.7f, 2.4f);
-            EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, 1.7f, 2.4f);
+            if (!isHit)
+            {
+                PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, 1.7f, 2.4f);
+
+            }
+            else
+            {
+                EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, 1.7f, 2.4f);
+            }
+            
+            
         }
         if(GameData.instance.isSingleplayer == false)
         {
-            PaddleController.instance.rb.transform.localScale = new Vector3(0.3f, 2.7f, 1);
+            if (!isHit)
+            {
+                PaddleController.instance.rb.transform.localScale = new Vector3(0.3f, 2.7f, 1);
+            }
+            else
+            {
+                EnemyController.instance.rb.transform.localScale = new Vector3(0.3f, 2.7f, 1);
+            }
+            
 
-            EnemyController.instance.rb.transform.localScale = new Vector3(0.3f, 2.7f, 1);
+            
         }
         
         
@@ -83,6 +112,7 @@ public class BallController : MonoBehaviour
         yield return new WaitForSeconds(5);
         if (GameData.instance.isSingleplayer == true)
         {
+            
             PaddleController.instance.rb.transform.localScale = new Vector3(2.4f, 1.2f, 2.4f);
             EnemyController.instance.rb.transform.localScale = new Vector3(2.4f, 1.2f, 2.4f);
         }
@@ -95,8 +125,16 @@ public class BallController : MonoBehaviour
     }
     public void SpeedPadle(float spds)
     {
-        PaddleController.instance.spd *= spds;
-        EnemyController.instance.spdPaddle *= spds;
+        if (!isHit)
+        {
+            PaddleController.instance.spd *= spds;
+        }
+        else
+        {
+            EnemyController.instance.spdPaddle *= spds;
+        }
+        
+        
         StartCoroutine("StopSpeed");
 
     }

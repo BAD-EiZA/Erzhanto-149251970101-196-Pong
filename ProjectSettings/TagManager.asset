@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - EnemyAI
   - Paddle
+  - PaddleKiri
+  - PaddleKanan
   layers:
   - Default
   - TransparentFX
